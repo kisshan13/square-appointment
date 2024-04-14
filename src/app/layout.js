@@ -1,5 +1,6 @@
 // import { Inter } from "next/font/google";
 import "./globals.css";
+import "@radix-ui/themes/styles.css";
 import { Providers } from "./provider";
 // import Header from "@/components/shared/Header";
 
@@ -12,9 +13,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Providers>
-          {children}
-        </Providers>
+        <Theme>
+          <Providers>
+            {children}
+          </Providers>
+        </Theme>
       </body>
     </html>
   );
