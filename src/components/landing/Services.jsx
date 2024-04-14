@@ -6,6 +6,9 @@ import cleaning from "../../../public/image/cleaning.webp";
 import electric from "../../../public/image/electric.webp";
 import smart from "../../../public/image/smartlock.webp";
 import purifier from "../../../public/image/waterpurifier.webp";
+import star from "../../../public/image/star.webp";
+import user from "../../../public/image/user.webp";
+import Image from "next/image";
 
 const Services = () => {
   const servicesData = [
@@ -42,38 +45,78 @@ const Services = () => {
     },
   ];
 
+  const statsData = [
+    {
+      img: star,
+      stats: "4.8",
+      title: "Service Rating",
+    },
+    {
+      img: user,
+      stats: "5M +",
+      title: "Customers Globally",
+    },
+  ];
+
   return (
-    <div>
-      <h1 className="text-3xl text-black font-medium">
+    <div className="w-full">
+      <h1 className="text-3xl text-black font-medium max-w-80">
         Home services at your doorstep
       </h1>
-      <div className="rounded-lg border-[1px] border-gray-500 p-4 ">
-        <h2 className="text-lg text-gray-600">What are you looking for?</h2>
-        <div className="flex flex-col gap-4">
+      <div className="rounded-lg mt-4 border border-gray-400 p-4 flex flex-col gap-3 ">
+        <h2 className="text-lg text-gray-400">What are you looking for?</h2>
+        <div className="flex flex-col gap-4 mt-4">
           <div className="grid grid-cols-3 gap-3">
-            {servicesData?.map((data) => {
+            {servicesData?.map((data, i) => {
               return (
-                <div className="flex flex-col items-center justify-center">
-                  <img
-                    src={data.img}
-                    className="object-contain bg-gray-300 rounded-md"
-                  />
-                  <div className="text-black text-center text-sm">
+                <div
+                  key={i}
+                  className="flex flex-col items-center justify-start gap-3 "
+                >
+                  <div className="bg-gray-100 w-full flex items-center p-3 rounded-lg justify-center">
+                    <Image
+                      src={data.img}
+                      className="object-contain bg-gray-300  rounded-md"
+                    />
+                  </div>
+                  <div className="text-black text-center text-xs max-w-24">
                     {data?.title}
                   </div>
                 </div>
               );
             })}
           </div>
-          <div>
+          <div className="grid grid-cols-2 gap-3">
             {data?.map((data, i) => {
-              <div className="flex items-center justify-between bg-gray-300 rounded-lg">
-                <span>{data?.title}</span>
-                <img src={data?.img} className="" />
-              </div>;
+              return (
+                <div
+                  key={i}
+                  className="flex items-center justify-between p-4 bg-gray-100 rounded-lg"
+                >
+                  <span className="text-black text-start text-xs max-w-24">
+                    {data?.title}
+                  </span>
+                  <Image src={data?.img} className="" />
+                </div>
+              );
             })}
           </div>
         </div>
+      </div>
+      <div className="flex gap-12 mt-12 w-full">
+        {statsData.map((stats, i) => {
+          return (
+            <div className="flex items-center gap-5" key={i}>
+              <Image src={stats?.img} />
+              <div className="flex flex-col gap-0.5">
+                <span className="text-black font-medium text-base">
+                  {stats?.stats}
+                </span>
+                <span className="text-black text-xs">{stats?.title}</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
