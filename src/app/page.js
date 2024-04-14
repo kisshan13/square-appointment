@@ -1,5 +1,7 @@
 import PageContainer from "@/components/container/PageContainer";
+import Services from "@/components/landing/Services";
 import Header from "@/components/shared/Header";
+import ServiceContainer from "@/components/shared/ServiceContainer";
 
 export default function Home() {
   return (
@@ -11,7 +13,7 @@ export default function Home() {
       </div>
       <main>
         <PageContainer>
-          
+          <Services />
         </PageContainer>
       </main>
     </>
