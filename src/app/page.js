@@ -4,14 +4,14 @@ import Header from "@/components/shared/Header";
 export default function Home() {
   return (
     <>
-      <PageContainer>
-        <div>
+      <div className="border-b">
+        <PageContainer>
           <Header />
-        </div>
-      </PageContainer>
+        </PageContainer>
+      </div>
       <main>
         <PageContainer>
-
+          
         </PageContainer>
       </main>
     </>
