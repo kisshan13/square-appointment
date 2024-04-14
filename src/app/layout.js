@@ -2,6 +2,7 @@
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import { Providers } from "./provider";
+import { Theme } from "@radix-ui/themes";
 // import Header from "@/components/shared/Header";
 
 export const metadata = {
