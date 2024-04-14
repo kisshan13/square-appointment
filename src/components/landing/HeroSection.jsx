@@ -4,7 +4,7 @@ import ServicesShowCase from "./ServicesShowCase";
 
 const HeroSection = () => {
   return (
-    <div className="flex justify-between w-full gap-32">
+    <div className="flex justify-between w-full gap-32 mt-12">
       <div className="w-1/2">
         <Services />
       </div>
