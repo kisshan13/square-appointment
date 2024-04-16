@@ -1,7 +1,7 @@
 import PageContainer from "@/components/container/PageContainer";
-import Services from "@/components/landing/Services";
+import HeroSection from "@/components/landing/HeroSection";
+import ServicesSection from "@/components/landing/ServicesSection";
 import Header from "@/components/shared/Header";
-import ServiceContainer from "@/components/shared/ServiceContainer";
 
 export default function Home() {
   return (
@@ -13,7 +13,8 @@ export default function Home() {
       </div>
       <main>
         <PageContainer>
-          <Services />
+          <HeroSection />
+          <ServicesSection />
         </PageContainer>
       </main>
     </>

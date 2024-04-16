@@ -1,29 +1,126 @@
-import ServiceCard from "../cards/ServiceCard";
-import ServiceContainer from "../shared/ServiceContainer";
+import React from "react";
+import girl from "../../../public/image/girl.webp";
+import boy from "../../../public/image/boy.webp";
+import ac from "../../../public/image/ac.webp";
+import cleaning from "../../../public/image/cleaning.webp";
+import electric from "../../../public/image/electric.webp";
+import smart from "../../../public/image/smartlock.webp";
+import purifier from "../../../public/image/waterpurifier.webp";
+import star from "../../../public/image/star.webp";
+import user from "../../../public/image/user.webp";
 import Image from "next/image";
-import serviceImage from "../../../public/services/service-one.webp"
 
-const services = [
-    { image: "", title: "Native Water Purifier" },
-    { image: "", title: "Native Smart Lock" },
-    { image: "", title: "Baathroom & Kitchen Cleaning" },
-    { image: "", title: "AC Service and Repair" },
-]
+const Services = () => {
+  const servicesData = [
+    {
+      img: girl,
+      title: "Salon Prime",
+    },
+    {
+      img: boy,
+      title: "Salon Prime for kids & men",
+    },
+    {
+      img: ac,
+      title: "AC & Appliance Repair",
+    },
+  ];
 
-function Services() {
-    return (
-        <ServiceContainer title={"New and noteworthy"}>
-            <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
-                {
-                    services?.map((service, i) => (
-                        <div className="flex-1 max-w-[200px] ">
-                            <ServiceCard src={serviceImage} alt={service.title} title={service.title} href={"#"} key={i} />
-                        </div>
-                    ))
-                }
+  const data = [
+    {
+      img: cleaning,
+      title: "Cleaning",
+    },
+    {
+      img: electric,
+      title: "Electric , plumber & carpenter ",
+    },
+    {
+      img: smart,
+      title: "Native Water purifier",
+    },
+    {
+      img: purifier,
+      title: "native Smart locks",
+    },
+  ];
+
+  const statsData = [
+    {
+      img: star,
+      stats: "4.8",
+      title: "Service Rating",
+    },
+    {
+      img: user,
+      stats: "5M +",
+      title: "Customers Globally",
+    },
+  ];
+
+  return (
+    <div className="w-full">
+      <h1 className="hidden lg:flex text-3xl text-black font-medium max-w-80">
+        Home services at your doorstep
+      </h1>
+      <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4 flex flex-col gap-3 ">
+        <h2 className="hidden lg:flex text-lg text-gray-400">What are you looking for?</h2>
+        <div className="flex flex-col gap-4 mt-4">
+          <div className="grid grid-cols-3 gap-3">
+            {servicesData?.map((data, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex flex-col items-center justify-start gap-3 "
+                >
+                  <div className="bg-gray-100 w-full flex items-center p-3 rounded-lg justify-center">
+                    <Image
+                      src={data.img}
+                      className="object-contain bg-gray-300  rounded-md"
+                    />
+                  </div>
+                  <div className="text-black text-center text-xs max-w-24">
+                    {data?.title}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            {data?.map((data, i) => {
+              return (
+                <div
+                  key={i}
+                  className="flex items-center justify-between p-4 bg-gray-100 rounded-lg"
+                >
+                  <span className="text-black text-start text-xs max-w-24">
+                    {data?.title}
+                  </span>
+                  <Image src={data?.img} className="" />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="hidden lg:flex gap-12 mt-12 w-full">
+        {statsData.map((stats, i) => {
+          return (
+            <div className="flex items-center gap-5" key={i}>
+              <Image src={stats?.img} />
+              <div className="flex flex-col gap-0.5">
+                <span className="text-black font-medium text-base">
+                  {stats?.stats}
+                </span>
+                <span className="text-black text-xs">{stats?.title}</span>
+              </div>
             </div>
-        </ServiceContainer>
-    );
-}
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 export default Services;
+
