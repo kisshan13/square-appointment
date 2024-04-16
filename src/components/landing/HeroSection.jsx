@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="w-full lg:w-1/2">
         <Services />
       </div>
-      <div className="hidden lg:w-1/2">
+      <div className="hidden lg:flex lg:w-1/2">
         <ServicesShowCase />
       </div>
     </div>
