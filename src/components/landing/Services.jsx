@@ -60,11 +60,11 @@ const Services = () => {
 
   return (
     <div className="w-full">
-      <h1 className="text-3xl text-black font-medium max-w-80">
+      <h1 className="hidden lg:flex text-3xl text-black font-medium max-w-80">
         Home services at your doorstep
       </h1>
-      <div className="rounded-lg mt-4 border border-gray-400 p-4 flex flex-col gap-3 ">
-        <h2 className="text-lg text-gray-400">What are you looking for?</h2>
+      <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4 flex flex-col gap-3 ">
+        <h2 className="hidden lg:flex text-lg text-gray-400">What are you looking for?</h2>
         <div className="flex flex-col gap-4 mt-4">
           <div className="grid grid-cols-3 gap-3">
             {servicesData?.map((data, i) => {
@@ -103,7 +103,7 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-12 mt-12 w-full">
+      <div className="hidden lg:flex gap-12 mt-12 w-full">
         {statsData.map((stats, i) => {
           return (
             <div className="flex items-center gap-5" key={i}>

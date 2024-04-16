@@ -4,11 +4,11 @@ import ServicesShowCase from "./ServicesShowCase";
 
 const HeroSection = () => {
   return (
-    <div className="flex justify-between w-full gap-32 mt-12">
-      <div className="w-1/2">
+    <div className="flex flex-col justify-center lg:flex-row lg:justify-between w-full gap-32 mt-12">
+      <div className="w-full lg:w-1/2">
         <Services />
       </div>
-      <div className="w-1/2">
+      <div className="hidden lg:w-1/2">
         <ServicesShowCase />
       </div>
     </div>
