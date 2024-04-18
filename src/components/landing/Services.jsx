@@ -9,6 +9,7 @@ import purifier from "../../../public/image/waterpurifier.webp";
 import star from "../../../public/image/star.webp";
 import user from "../../../public/image/user.webp";
 import Image from "next/image";
+import ServicesCard from "../ui/ServicesCard";
 
 const Services = () => {
   const servicesData = [
@@ -64,28 +65,11 @@ const Services = () => {
         Home services at your doorstep
       </h1>
       <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4 flex flex-col gap-3 ">
-        <h2 className="hidden lg:flex text-lg text-gray-400">What are you looking for?</h2>
+        <h2 className="hidden lg:flex text-lg text-gray-400">
+          What are you looking for?
+        </h2>
         <div className="flex flex-col gap-4 mt-4">
-          <div className="grid grid-cols-3 gap-3">
-            {servicesData?.map((data, i) => {
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col items-center justify-start gap-3 "
-                >
-                  <div className="bg-gray-100 w-full flex items-center p-3 rounded-lg justify-center">
-                    <Image
-                      src={data.img}
-                      className="object-contain bg-gray-300  rounded-md"
-                    />
-                  </div>
-                  <div className="text-black text-center text-xs max-w-24">
-                    {data?.title}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <ServicesCard data={servicesData} bgColor={true} />
           <div className="grid grid-cols-2 gap-3">
             {data?.map((data, i) => {
               return (
@@ -123,4 +107,3 @@ const Services = () => {
 };
 
 export default Services;
-
