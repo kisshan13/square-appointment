@@ -35,6 +35,7 @@ const Fotter = () => {
           <h3 className="font-semibold text-xl mt-6">SquareApps</h3>
           <div className="grid grid-cols-4 gap-5 w-full mt-4">
             {footerData?.map((data) => {
+              ``;
               return (
                 <div className="gap-7 mt-1">
                   <h3 className="text-xl font-medium text-black">
@@ -66,8 +67,8 @@ const Fotter = () => {
             <div className="gap-7 mt-1">
               <h3 className="text-xl font-medium text-black">Social Links</h3>
               <div className="flex flex-col items-start gap-2 mt-3">
-                <Image sar={apple} />
-                <Image sar={google} />
+                <Image src={apple} />
+                <Image src={google} />
               </div>
             </div>
           </div>
