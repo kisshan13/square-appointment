@@ -12,6 +12,7 @@ import cat9 from "../../../public/women/cat9.webp";
 import ServicesCard from "../ui/ServicesCard";
 
 const SubCategory = () => {
+  
   const subCategoryData = [
     { img: cat1, title: "Best Seller Pakages" },
     { img: cat2, title: "Make your package" },
@@ -23,6 +24,7 @@ const SubCategory = () => {
     { img: cat8, title: "Bleach & detan" },
     { img: cat9, title: "Hair care" },
   ];
+
   return (
     <div className="flex flex-col gap-3">
       <CategoryTitle

@@ -12,6 +12,7 @@ import Image from "next/image";
 import ServicesCard from "../ui/ServicesCard";
 
 const Services = () => {
+  
   const servicesData = [
     {
       img: girl,

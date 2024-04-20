@@ -9,7 +9,6 @@ function Header() {
 
   const handleClick = () => {
     router.push("/");
-   
   };
 
   return (
