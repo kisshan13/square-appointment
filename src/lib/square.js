@@ -7,5 +7,4 @@ const square = new Client({
     environment: Environment.Sandbox,
 });
 
-
 export default square;

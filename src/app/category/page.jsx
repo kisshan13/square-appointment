@@ -2,7 +2,7 @@ import Banner from "@/components/Category/Banner";
 import SubCategory from "@/components/Category/SubCategory";
 import PageContainer from "@/components/container/PageContainer";
 
-export default function Home() {
+export default function Home({ params }) {
   return (
     <div className="my-8">
       <PageContainer>
