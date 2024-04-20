@@ -1,3 +1,4 @@
+import ProductCard from "@/components/cards/ProductCard";
 import Banner from "@/components/Category/Banner";
 import SubCategory from "@/components/Category/SubCategory";
 import PageContainer from "@/components/container/PageContainer";
@@ -12,7 +13,14 @@ export default function Home({ params }) {
           </div>
           <div className="w-[72vw]">
             <Banner />
+
+            <div className=" my-10">
+
+              <ProductCard title={"Haircut for men"} price={"₹ 259"} />
+            </div>
           </div>
+
+
         </div>
       </PageContainer>
     </div>

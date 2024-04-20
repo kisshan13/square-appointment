@@ -7,10 +7,14 @@ import MenServices from "@/components/landing/MenServices";
 import banner2 from "../../public/banner/banner2.webp";
 import banner1 from "../../public/banner/banner1.webp";
 
-export default function Home() {
+export default async function Home() {
+
+  const response = await fetch("http://localhost:3000/api/store");
+  const data = await response.json();
+
+
   return (
     <>
-
       <main>
         <PageContainer>
           <HeroSection />

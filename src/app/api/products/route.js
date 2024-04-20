@@ -8,7 +8,7 @@ import { NextRequest } from "next/server";
 export async function GET(request) {
     const url = new URL(request.url);
     const category = url.searchParams.get("categoryId");
-    const id = url.searchParams.get("id")
+    const id = url.searchParams.get("id");
 
     if (category) {
 

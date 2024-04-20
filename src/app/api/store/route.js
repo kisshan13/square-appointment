@@ -51,7 +51,6 @@ export async function GET(request) {
             return !c.categoryData.parentCategory?.id;
         });
 
-
         return Response.json(
             {
                 landing: {
