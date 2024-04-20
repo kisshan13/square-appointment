@@ -1,14 +1,10 @@
+import prisma from "@/lib/prisma";
 import square from "@/lib/square";
+import { image } from "@nextui-org/react";
 import { NextRequest } from "next/server";
 
 BigInt.prototype.toJSON = function () {
     return this.toString();
-};
-
-const dummyData = {
-    hero: {
-        heading: "Book your appointments with ease.",
-    },
 };
 
 /**
@@ -17,12 +13,30 @@ const dummyData = {
  */
 export async function GET(request) {
     try {
-        const categories = await square.catalogApi.listCatalog("", "CATEGORY");
+        const [categories, pageCategory] = await Promise.all([
+            square.catalogApi.listCatalog("", "CATEGORY"),
+            prisma.category.findFirst()
+        ]);
 
+        const [mainCategoryId, secondaryCategoryId] = pageCategory.categories;
 
-        const mainCategoryId = "ULKZ3VBRG3XQD3HAETV2SYHD";
+        console.log(secondaryCategoryId)
+
+        const images = await Promise.all(
+            categories.result.objects.map((object) =>
+                square.catalogApi.retrieveCatalogObject(
+                    object?.categoryData?.imageIds?.at(0)
+                )
+            )
+        );
+
+        images.forEach((image) => {
+            const object = categories.result.objects.find((obj) => obj.categoryData.imageIds.at(0) === image.result.object.id);
+            object.image = image.result.object.imageData.url;
+        });
 
         const mainCategory = [];
+        const secondaryCategory = [];
 
         const category = categories.result.objects.filter((c) => {
 
@@ -30,46 +44,27 @@ export async function GET(request) {
                 mainCategory.push(c);
             }
 
-            return !c.categoryData.parentCategory?.id
+            if (c.categoryData?.parentCategory?.id === secondaryCategoryId) {
+                secondaryCategory.push(c);
+            }
+
+            return !c.categoryData.parentCategory?.id;
         });
 
-        const images = await Promise.all(
-            category.map((object) =>
-                square.catalogApi.retrieveCatalogObject(
-                    object?.categoryData?.imageIds?.at(0)
-                )
-            )
-        );
-
-        const mainCategoryImages = await Promise.all(
-            mainCategory.map((object) =>
-                square.catalogApi.retrieveCatalogObject(
-                    object?.categoryData?.imageIds?.at(0)
-                )
-            )
-        )
-
-        mainCategory.forEach((object, index) => {
-            object.image = mainCategoryImages[index]?.result?.object?.imageData?.url;
-        })
-
-        category.forEach((object, index) => {
-            object.image = images[index]?.result?.object.imageData.url;
-        });
 
         return Response.json(
             {
-                hero: {
+                landing: {
                     heading: "Home services at your doorstep",
                     categoryText: "What are you looking for ?",
                     category: category,
-                    mainCategory: mainCategory
+                    mainCategory: mainCategory,
+                    secondaryCategory
                 },
             },
             { status: 200 }
         );
     } catch (error) {
-        console.log(error)
         return Response.json({ message: "Internal server error" }, { status: 500 });
     }
 }

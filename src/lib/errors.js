@@ -22,7 +22,6 @@ function zodError(error) {
 }
 
 function jwtError(error) {
-    console.log(error)
     const response = { message: "Invalid token", status: 403 }
 
     if (error instanceof JsonWebTokenError) {

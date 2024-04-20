@@ -1,17 +1,16 @@
 import PageContainer from "@/components/container/PageContainer";
 import HeroSection from "@/components/landing/HeroSection";
 import ServicesSection from "@/components/landing/ServicesSection";
-import Header from "@/components/shared/Header";
 import Image from "next/image";
-import banner1 from "../../public/banner/banner1.webp";
-import banner2 from "../../public/banner/banner2.webp";
 import MenServices from "@/components/landing/MenServices";
-import Fotter from "@/components/ui/Fotter";
+
+import banner2 from "../../public/banner/banner2.webp";
+import banner1 from "../../public/banner/banner1.webp";
 
 export default function Home() {
   return (
     <>
-      
+
       <main>
         <PageContainer>
           <HeroSection />
@@ -21,7 +20,7 @@ export default function Home() {
           <Image src={banner2} className=" mt-8 w-full rounded-lg" />
         </PageContainer>
       </main>
-      
+
     </>
   );
 }

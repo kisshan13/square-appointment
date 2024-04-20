@@ -17,3 +17,12 @@ export const userAddressSchema = z.object({
     locality: z.string().min(3),
     postal_code: z.string().min(5),
 })
+
+export const categoryAddSchema = z.object({
+    category: z.string().array()
+})
+
+export const categoryEditSchema = z.object({
+    category: z.string().array(),
+    id: z.string()
+})
