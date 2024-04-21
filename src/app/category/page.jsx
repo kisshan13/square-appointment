@@ -15,12 +15,9 @@ export default function Home({ params }) {
             <Banner />
 
             <div className=" my-10">
-
               <ProductCard title={"Haircut for men"} price={"₹ 259"} />
             </div>
           </div>
-
-
         </div>
       </PageContainer>
     </div>

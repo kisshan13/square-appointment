@@ -26,3 +26,7 @@ export const categoryEditSchema = z.object({
     category: z.string().array(),
     id: z.string()
 })
+
+export const createCheckoutLinkSchema = z.object({
+    productId: z.string()
+})
