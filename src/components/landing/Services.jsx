@@ -11,7 +11,7 @@ import user from "../../../public/image/user.webp";
 import Image from "next/image";
 import ServicesCard from "../ui/ServicesCard";
 
-const Services = () => {
+const Services = ({ hero }) => {
   const servicesData = [
     {
       img: girl,
@@ -62,25 +62,25 @@ const Services = () => {
   return (
     <div className="w-full">
       <h1 className="hidden lg:flex text-3xl text-black font-medium max-w-80">
-        Home services at your doorstep
+        {hero?.heading}
       </h1>
       <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4 flex flex-col gap-3 ">
         <h2 className="hidden lg:flex text-lg text-gray-400">
-          What are you looking for?
+          {hero?.categoryText}
         </h2>
         <div className="flex flex-col gap-4 mt-4">
           <ServicesCard data={servicesData} bgColor={true} />
           <div className="grid grid-cols-2 gap-3">
-            {data?.map((data, i) => {
+            {hero?.categories?.map((data, i) => {
               return (
                 <div
                   key={i}
                   className="flex items-center justify-between p-4 bg-gray-100 rounded-lg"
                 >
                   <span className="text-black text-start text-xs max-w-24">
-                    {data?.title}
+                    {data?.categoryData?.name}
                   </span>
-                  <Image src={data?.img} className="" />
+                  <img src={data?.image} className="" />
                 </div>
               );
             })}

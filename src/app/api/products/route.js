@@ -12,9 +12,13 @@ export async function GET(request) {
 
     if (category) {
 
-        const products = await square.catalogApi.searchCatalogItems({
-            ...(category && { categoryIds: [category] }),
-        });
+        // const products = await square.catalogApi.searchCatalogItems({
+        //     ...(category && { categoryIds: [category] }),
+        // });
+
+        const products = await square.catalogApi.searchCatalogItems({categoryIds : [category]});
+
+        console.log(products.result);
 
         const images = await Promise.all(
             products.result.items.map((object) =>
