@@ -1,3 +1,5 @@
+"use clientS"
+
 import PageContainer from "@/components/container/PageContainer";
 import HeroSection from "@/components/landing/HeroSection";
 import ServicesSection from "@/components/landing/ServicesSection";
@@ -8,20 +10,21 @@ import banner2 from "../../public/banner/banner2.webp";
 import MenServices from "@/components/landing/MenServices";
 import Fotter from "@/components/ui/Fotter";
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("http://localhost:3000/api/store");
+  // console.log(await res.json());
+  const data = await res.json();
   return (
     <>
-      
       <main>
         <PageContainer>
-          <HeroSection />
+          <HeroSection data={data}/>
           <ServicesSection />
           <Image src={banner1} className="w-full rounded-lg" />
           <MenServices />
           <Image src={banner2} className=" mt-8 w-full rounded-lg" />
         </PageContainer>
       </main>
-      
     </>
   );
 }
