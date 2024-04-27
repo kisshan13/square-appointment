@@ -2,22 +2,29 @@ import square from "@/lib/square";
 import { NextRequest } from "next/server";
 
 BigInt.prototype.toJSON = function () {
-    return this.toString();
+  return this.toString();
 };
 
 /**
- * 
- * @param {NextRequest} request 
- * @returns 
+ *
+ * @param {NextRequest} request
+ * @returns
  */
+
 export async function GET(request) {
-    const categorys = await square.catalogApi.listCatalog("", "CATEGORY");
+  const categorys = await square.catalogApi.listCatalog("", "CATEGORY");
 
-    const images = await Promise.all(categorys.result.objects.map((object) => square.catalogApi.retrieveCatalogObject(object?.categoryData?.imageIds?.at(0))));
+  const images = await Promise.all(
+    categorys.result.objects.map((object) =>
+      square.catalogApi.retrieveCatalogObject(
+        object?.categoryData?.imageIds?.at(0)
+      )
+    )
+  );
 
-    categorys.result.objects.forEach((object, index) => {
-        object.image = images[index]?.result?.object.imageData.url;
-    });
+  categorys.result.objects.forEach((object, index) => {
+    object.image = images[index]?.result?.object.imageData.url;
+  });
 
-    return Response.json({ category: categorys.result.objects }, { status: 200 });
+  return Response.json({ category: categorys.result.objects }, { status: 200 });
 }

@@ -1,3 +1,4 @@
+import ProductCard from "@/components/cards/ProductCard";
 import Banner from "@/components/Category/Banner";
 import SubCategory from "@/components/Category/SubCategory";
 import PageContainer from "@/components/container/PageContainer";

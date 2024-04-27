@@ -10,7 +10,7 @@ export default function ServiceCard({ src, alt, title, href }) {
             {title}
           </p>
         </div>
-        <Image src={src} alt={alt} className="w-full h-full object-bottom" />
+        <img src={src} alt={alt} className="w-full h-full object-bottom" />
       </div>
     </Link>
   );
