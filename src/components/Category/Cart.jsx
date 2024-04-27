@@ -4,7 +4,7 @@ import Promise from "./Promise";
 
 const Cart = () => {
   return (
-    <div className="flex flex-col gap-3 ">
+    <div className="flex flex-col gap-5">
       <Coupon />
       <Promise />
     </div>
