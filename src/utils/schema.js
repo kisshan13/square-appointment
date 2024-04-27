@@ -28,5 +28,20 @@ export const categoryEditSchema = z.object({
 })
 
 export const createCheckoutLinkSchema = z.object({
-    productId: z.string()
+    productId: z.string(),
+    customerId: z.string(),
+    modifiers: z.array(z.object({
+        modifierId: z.string(),
+        modifierValue: z.string(),
+    }))
+})
+
+export const createBannerSchema = z.object({
+    uploadId: z.string(),
+    url: z.string()
+})
+
+export const createAdminSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8)
 })

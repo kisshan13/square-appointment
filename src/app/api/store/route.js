@@ -1,6 +1,5 @@
 import prisma from "@/lib/prisma";
 import square from "@/lib/square";
-import { image } from "@nextui-org/react";
 import { NextRequest } from "next/server";
 
 BigInt.prototype.toJSON = function () {
@@ -21,6 +20,7 @@ export async function GET(request) {
 
     const [mainCategoryId, secondaryCategoryId] = pageCategory.categories;
 
+<<<<<<< HEAD
     console.log(secondaryCategoryId);
 
     const images = await Promise.all(
@@ -30,6 +30,15 @@ export async function GET(request) {
         )
       )
     );
+=======
+        const images = await Promise.all(
+            categories.result.objects.map((object) =>
+                square.catalogApi.retrieveCatalogObject(
+                    object?.categoryData?.imageIds?.at(0)
+                )
+            )
+        );
+>>>>>>> 3db833657825d3f3b71f9783583a6ebcd50dcb72
 
     images.forEach((image) => {
       const object = categories.result.objects.find(
