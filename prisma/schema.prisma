@@ -28,5 +28,11 @@ model Banners {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   uploads   Uploads @relation(fields: uploadsId, references: [id])
   uploadsId String  @db.ObjectId
-  url       String 
+  url       String
+}
+
+model AdminUser {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  email    String
+  password String
 }

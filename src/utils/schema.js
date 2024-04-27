@@ -40,3 +40,8 @@ export const createBannerSchema = z.object({
     uploadId: z.string(),
     url: z.string()
 })
+
+export const createAdminSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8)
+})
