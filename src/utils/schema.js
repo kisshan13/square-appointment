@@ -35,3 +35,8 @@ export const createCheckoutLinkSchema = z.object({
         modifierValue: z.string(),
     }))
 })
+
+export const createBannerSchema = z.object({
+    uploadId: z.string(),
+    url: z.string()
+})

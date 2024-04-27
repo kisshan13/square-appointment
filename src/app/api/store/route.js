@@ -1,6 +1,5 @@
 import prisma from "@/lib/prisma";
 import square from "@/lib/square";
-import { image } from "@nextui-org/react";
 import { NextRequest } from "next/server";
 
 BigInt.prototype.toJSON = function () {
@@ -19,8 +18,6 @@ export async function GET(request) {
         ]);
 
         const [mainCategoryId, secondaryCategoryId] = pageCategory.categories;
-
-        console.log(secondaryCategoryId)
 
         const images = await Promise.all(
             categories.result.objects.map((object) =>

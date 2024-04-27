@@ -17,3 +17,16 @@ model Category {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   categories String[]
 }
+
+model Uploads {
+  id      String    @id @default(auto()) @map("_id") @db.ObjectId
+  url     String
+  Banners Banners[]
+}
+
+model Banners {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  uploads   Uploads @relation(fields: uploadsId, references: [id])
+  uploadsId String  @db.ObjectId
+  url       String 
+}
