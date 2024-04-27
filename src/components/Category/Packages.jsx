@@ -6,6 +6,7 @@ import Image from "next/image";
 import haircut from "../../../public/men-services/serv1.webp";
 import { Button } from "@radix-ui/themes";
 import Cart from "./Cart";
+import EditCartPackage from "./EditCartPackage";
 
 const packagesData = [
   {
@@ -115,7 +116,7 @@ const Packages = () => {
                     </div>
                   </div>
                   <div className="my-5">
-                    <Button variant="outline">Edit your package</Button>
+                    <EditCartPackage />
                   </div>
                   <hr className="mb-5" />
                 </div>
