@@ -8,9 +8,9 @@ import {apiIsAuthenticated} from "@/utils/apiUtils";
  *  @param {NextRequest} request
  */
 export async function POST(request) {
-    try {
-        const rawPayload = await request.json();
-        const payload = createCheckoutLinkSchema.parse(rawPayload);
+  try {
+    const rawPayload = await request.json();
+    const payload = createCheckoutLinkSchema.parse(rawPayload);
 
         const isAuthenticated = await apiIsAuthenticated(request);
 

@@ -23,6 +23,7 @@ const SubCategory = () => {
     { img: cat8, title: "Bleach & detan" },
     { img: cat9, title: "Hair care" },
   ];
+
   return (
     <div className="flex flex-col gap-3">
       <CategoryTitle
@@ -31,7 +32,7 @@ const SubCategory = () => {
         booking={"(11.3 bookings)"}
       />
       <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4">
-        <ServicesCard data={subCategoryData} bgColor={false}/>
+        <ServicesCard data={subCategoryData} bgColor={false} />
       </div>
     </div>
   );

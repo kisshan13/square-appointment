@@ -1,6 +1,5 @@
 import { NextRequest } from "next/server";
 import bcrypt from "bcrypt";
-
 import { errorHandler } from "@/lib/errors";
 import { signAuth } from "@/lib/jwt";
 import square from "@/lib/square";
@@ -11,6 +10,7 @@ import { userAuthSchema } from "@/utils/schema";
  *
  * @param {NextRequest} request
  */
+
 export async function POST(request) {
   try {
     const rawPayload = await request.json();

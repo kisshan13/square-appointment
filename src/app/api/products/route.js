@@ -5,41 +5,39 @@ import { NextRequest } from "next/server";
  *
  * @param {NextRequest} request
  */
+
 export async function GET(request) {
-    const url = new URL(request.url);
-    const category = url.searchParams.get("categoryId");
-    const id = url.searchParams.get("id");
+  const url = new URL(request.url);
+  const category = url.searchParams.get("categoryId");
+  const id = url.searchParams.get("id");
 
-    if (category) {
+  if (category) {
+    const products = await square.catalogApi.searchCatalogItems({
+      ...(category && { categoryIds: [category] }),
+    });
 
-        // const products = await square.catalogApi.searchCatalogItems({
-        //     ...(category && { categoryIds: [category] }),
-        // });
+    const images = await Promise.all(
+      products.result.items.map((object) =>
+        square.catalogApi.retrieveCatalogObject(
+          object?.itemData?.imageIds?.at(0)
+        )
+      )
+    );
 
-        const products = await square.catalogApi.searchCatalogItems({categoryIds : [category]});
+    products.result.items.forEach((object, index) => {
+      object.image = images[index]?.result?.object.imageData.url;
+    });
 
-        console.log(products.result);
+    return Response.json({ products: products.result.items }, { status: 200 });
+  }
 
-        const images = await Promise.all(
-            products.result.items.map((object) =>
-                square.catalogApi.retrieveCatalogObject(
-                    object?.itemData?.imageIds?.at(0)
-                )
-            )
-        );
+  const products = await square.catalogApi.retrieveCatalogObject(id);
 
-        products.result.items.forEach((object, index) => {
-            object.image = images[index]?.result?.object.imageData.url;
-        });
+  const image = await square.catalogApi.retrieveCatalogObject(
+    products.result.object.itemData.imageIds?.at(0)
+  );
 
-        return Response.json({ products: products.result.items }, { status: 200 });
-    }
+  products.result.object.image = image.result.object.imageData.url;
 
-    const products = await square.catalogApi.retrieveCatalogObject(id);
-
-    const image = await square.catalogApi.retrieveCatalogObject(products.result.object.itemData.imageIds?.at(0));
-
-    products.result.object.image = image.result.object.imageData.url;
-
-    return Response.json({ products: [products.result.object] }, { status: 200 });
+  return Response.json({ products: [products.result.object] }, { status: 200 });
 }

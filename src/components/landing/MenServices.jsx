@@ -13,7 +13,7 @@ const services = [
   { title: "Hair color & Hair spa", img: serv4 },
 ];
 
-function MenServices() {
+function MenServices({data}) {
   return (
     <ServiceContainer title={"Salon For Men"} button={"See All"}>
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
