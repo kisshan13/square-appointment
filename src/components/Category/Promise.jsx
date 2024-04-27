@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import promise from "../../../public/coupon/promise.webp";
-import { LiaArrowRightSolid } from "react-icons/lia";
+import { LuArrowRight } from "react-icons/lu";
 
 const promiseCard = [
   { title: "4.5+ Rated Beauticians" },
@@ -19,7 +19,7 @@ const Promise = () => {
             return (
               <div className="flex gap-3" key={i}>
                 <span>
-                  <LiaArrowRightSolid />
+                  <LuArrowRight />
                 </span>
                 <span className="text-sm text-black font-normal">
                   {data?.title}

@@ -1,7 +1,7 @@
 // import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import "@radix-ui/themes/styles.css";
-import { Providers } from "./provider";
+import { Providers } from "../provider";
 import { Theme } from "@radix-ui/themes";
 import Fotter from "@/components/ui/Fotter";
 import PageContainer from "@/components/container/PageContainer";
