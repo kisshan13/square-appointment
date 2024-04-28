@@ -16,10 +16,10 @@ export default async function Home() {
     <>
       <main>
         <PageContainer>
-          <HeroSection data={data?.hero} />
-          <ServicesSection data={data?.hero} />
+          <HeroSection data={data?.landing} />
+          <ServicesSection data={data?.landing} />
           <Image src={banner1} className="w-full rounded-lg" />
-          <MenServices data={data?.hero} />
+          <MenServices data={data?.landing} />
           <Image src={banner2} className=" mt-8 w-full rounded-lg" />
         </PageContainer>
       </main>

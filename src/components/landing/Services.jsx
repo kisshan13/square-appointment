@@ -31,7 +31,7 @@ const Services = ({ data }) => {
         <div className="flex flex-col gap-4 mt-4">
           <ServicesCard data={data?.category} bgColor={true} />
           <div className="grid grid-cols-2 gap-3">
-            {data?.categories?.map((data, i) => {
+            {data?.category?.slice(3)?.map((data, i) => {
               return (
                 <div
                   key={i}
