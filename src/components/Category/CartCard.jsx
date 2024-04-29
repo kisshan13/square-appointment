@@ -54,7 +54,7 @@ const CartCard = () => {
                 />
               </div>
               <div className="text-xs text-black font-normal">
-                {data?.price}
+                ₹ {data?.price}
               </div>
             </div>
             <div className="flex flex-col gap-0.5">
@@ -65,7 +65,7 @@ const CartCard = () => {
                     key={i}
                   >
                     <LiaSquareFullSolid className="w-2 h-2 flex items-center justify-center" />
-                    <span className="text-sm font-light text-black">
+                    <span className="text-sm font-normal text-black">
                       {data?.featu}
                     </span>
                   </div>
@@ -75,6 +75,15 @@ const CartCard = () => {
           </div>
         );
       })}
+      <hr />
+      <div className="p-2">
+        <div className="bg-[#572AC8] flex items-center justify-between rounded-md py-2 px-3">
+          <span className="text-white text-sm font-medium">₹ 3999</span>
+          <span className="text-base font-medium text-white cursor-pointer">
+            View Cart
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

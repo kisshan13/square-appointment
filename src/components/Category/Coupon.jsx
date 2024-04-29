@@ -58,6 +58,7 @@ const Coupon = () => {
           <IoIosArrowDown className="px-2 w-4 h-4 rotate-180 text-[#6E42E5]" />
         </span>
       )}
+
     </div>
   );
 };
