@@ -37,7 +37,13 @@ export default function EditCartPackage() {
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle ">Complete </Dialog.Title>
+          <div className="bg-[#FFF1E5] flex flex-col gap-2 my-2 p-3">
+            <Dialog.Title className="text-2xl font-semibold text-black ">
+              Wax & glow roll-on{" "}
+            </Dialog.Title>
+            <div className="text-sm font-normal">Service time : 2 hrs 20 mins</div>
+          </div>
+
           {/* <Dialog.Description className="DialogDescription">
                 Make changes to your profile here. Click save when you're done.
               </Dialog.Description> */}

@@ -5,7 +5,7 @@ import { Button, TextField } from "@radix-ui/themes";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { apiAdminSignUp } from "@/lib/api/admin.api";
+import { apiAdminSignUp, apiAdminSignIn } from "@/lib/api/admin.api";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -19,9 +19,10 @@ export default function AdminAuth({ type }) {
         resolver: yupResolver(schema)
     })
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("")
     const router = useRouter();
 
-    const handleAuth = (data) => (type === "signup" ? apiAdminSignUp(data) : "");
+    const handleAuth = (data) => (type === "signup" ? apiAdminSignUp(data) : apiAdminSignIn(data));
 
     async function handleAdminAuth(data) {
         setIsLoading(true);
@@ -31,13 +32,14 @@ export default function AdminAuth({ type }) {
             localStorage.setItem("token", response.data.token);
             router.push("/admin/dashboard");
         } catch (error) {
+            setError(error?.response?.data?.message)
             console.log(error)
         }
         setIsLoading(false);
     }
 
     return (
-        <form onSubmit={handleSubmit(handleAdminAuth)}>
+        <form onSubmit={handleSubmit(handleAdminAuth)} className=" grid gap-5">
             <>
                 <TextField.Root disabled={isLoading} placeholder="Email" type="email" {...register("email")} />
                 {errors.email && <span className=" text-red-400 text-xs">{errors.email?.message}</span>}
@@ -46,6 +48,10 @@ export default function AdminAuth({ type }) {
                 <TextField.Root disabled={isLoading} placeholder="Password" type="password" {...register("password")} />
                 {errors.password && <span className=" text-red-400 text-xs">{errors.password?.message}</span>}
             </>
+
+            <div>
+                {error && <p className=" text-red-400 text-sm">{error}</p>}
+            </div>
 
             <Button loading={isLoading} type="submit">{type === "signup" ? "Sign Up" : "Sign In"}</Button>
         </form>

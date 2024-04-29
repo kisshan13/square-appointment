@@ -4,8 +4,8 @@ import HeroSection from "@/components/landing/HeroSection";
 import ServicesSection from "@/components/landing/ServicesSection";
 import Header from "@/components/shared/Header";
 import Image from "next/image";
-import banner1 from "../../public/banner/banner1.webp";
-import banner2 from "../../public/banner/banner2.webp";
+import banner1 from "../../../public/banner/banner1.webp";
+import banner2 from "../../../public/banner/banner2.webp";
 import MenServices from "@/components/landing/MenServices";
 
 export default async function Home() {
@@ -16,10 +16,10 @@ export default async function Home() {
     <>
       <main>
         <PageContainer>
-          <HeroSection data={data?.hero} />
-          <ServicesSection data={data?.hero} />
+          <HeroSection data={data?.landing} />
+          <ServicesSection data={data?.landing} />
           <Image src={banner1} className="w-full rounded-lg" />
-          <MenServices data={data?.hero} />
+          <MenServices data={data?.landing} />
           <Image src={banner2} className=" mt-8 w-full rounded-lg" />
         </PageContainer>
       </main>
