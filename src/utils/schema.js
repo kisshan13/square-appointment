@@ -45,3 +45,9 @@ export const createAdminSchema = z.object({
     email: z.string().email(),
     password: z.string().min(8)
 })
+
+export const storeInfoSchema = z.object({
+    name: z.string(),
+    hero: z.string(),
+    categoryDisplay: z.string()
+})
