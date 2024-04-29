@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import CategoryTitle from "../ui/CategoryTitle";
 import cat1 from "../../../public/women/cat1.webp";

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ServiceCard({ src, alt, title, href }) {
+export default function ServiceCard({ service, src, alt, title, href }) {
   return (
     <Link href={href}>
       <div className=" flex flex-col  h-full rounded-lg border border-gray-200 hover:border-gray-400">
@@ -10,7 +10,11 @@ export default function ServiceCard({ src, alt, title, href }) {
             {title}
           </p>
         </div>
-        <img src={src} alt={alt} className="w-full h-full object-bottom" />
+        {service === false ? (
+          <Image src={src} alt={alt} className="w-full h-full object-bottom" />
+        ) : (
+          <img src={src} alt={alt} className="w-full h-full object-bottom" />
+        )}
       </div>
     </Link>
   );

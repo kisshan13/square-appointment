@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import unlock from "../../../public/coupon/unlock-benefits.webp";
