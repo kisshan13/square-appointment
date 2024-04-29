@@ -53,6 +53,8 @@ export async function GET(request) {
 
     const store = await prisma.store.findFirst();
 
+    console.log(store)
+
     return Response.json(
       {
         landing: {
