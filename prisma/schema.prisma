@@ -36,3 +36,10 @@ model AdminUser {
   email    String
   password String
 }
+
+model Store {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name        String?
+  hero String?
+  categoryDisplay String?
+}

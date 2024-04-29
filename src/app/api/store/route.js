@@ -1,5 +1,7 @@
+import { errorHandler } from "@/lib/errors";
 import prisma from "@/lib/prisma";
 import square from "@/lib/square";
+import { storeInfoSchema } from "@/utils/schema";
 import { NextRequest } from "next/server";
 
 BigInt.prototype.toJSON = function () {
@@ -10,7 +12,6 @@ BigInt.prototype.toJSON = function () {
  *
  * @param {NextRequest} request
  */
-
 export async function GET(request) {
   try {
     const [categories, pageCategory] = await Promise.all([
@@ -50,11 +51,14 @@ export async function GET(request) {
       return !c.categoryData.parentCategory?.id;
     });
 
+    const store = await prisma.store.findFirst();
+
     return Response.json(
       {
         landing: {
-          heading: "Home services at your doorstep",
-          categoryText: "What are you looking for ?",
+          store: store?.name,
+          heading: store?.hero || "Home services at your doorstep",
+          categoryText: store?.categoryDisplay || "What are you looking for ?",
           category: category,
           mainCategory: mainCategory,
           secondaryCategory,
@@ -64,5 +68,37 @@ export async function GET(request) {
     );
   } catch (error) {
     return Response.json({ message: "Internal server error" }, { status: 500 });
+  }
+}
+
+/**
+ *
+ * @param {NextRequest} request
+ */
+export async function PUT(request) {
+  try {
+    const rawPayload = await request.json();
+    const payload = storeInfoSchema.parse(rawPayload);
+
+    const store = await prisma.store.findFirst();
+
+    if (store) {
+      await prisma.store.update({
+        where: {
+          id: store.id
+        },
+        data: {
+          ...payload
+        }
+      });
+      return Response.json({ message: "Store Updated" }, { status: 200 });
+    }
+
+    await prisma.store.create({ data: { ...payload } });
+
+    return Response.json({ message: "Store Updated" }, { status: 200 });
+  }
+  catch (error) {
+    return errorHandler(error);
   }
 }
