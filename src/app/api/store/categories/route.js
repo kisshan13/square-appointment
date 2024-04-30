@@ -37,6 +37,8 @@ export async function PUT(request) {
     const rawPayload = await request.json();
     const payload = categoryEditSchema.parse(rawPayload);
 
+    
+
     await prisma.category.update({
       where: { id: payload.id },
       data: { categories: payload.category },

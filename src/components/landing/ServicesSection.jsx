@@ -8,12 +8,12 @@ function ServicesSection({ data }) {
 
   return (
     <ServiceContainer
-      title={"Salon And Women"}
+      title={data?.mainCategory.title || "Category"}
       button={"See All"}
-      onClick={() => router.push("/category")}
+     href={`/category?id=${data?.mainCategory?.category?.at(0)?.id}`}
     >
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
-        {data?.mainCategory?.map((service, i) => (
+        {data?.mainCategory.category?.map((service, i) => (
           <div
             key={i}
             className="flex-1 max-w-[250px]"
