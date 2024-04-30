@@ -11,7 +11,7 @@ import cat8 from "../../../public/women/cat8.webp";
 import cat9 from "../../../public/women/cat9.webp";
 import ServicesCard from "../ui/ServicesCard";
 
-const SubCategory = () => {
+const SubCategory = ({ data }) => {
   const subCategoryData = [
     { img: cat1, title: "Best Seller Pakages" },
     { img: cat2, title: "Make your package" },
@@ -32,7 +32,7 @@ const SubCategory = () => {
         booking={"(11.3 bookings)"}
       />
       <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4">
-        <ServicesCard data={subCategoryData} bgColor={false} />
+        <ServicesCard data={data} bgColor={false} />
       </div>
     </div>
   );

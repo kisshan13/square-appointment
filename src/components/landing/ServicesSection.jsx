@@ -6,13 +6,11 @@ import { useRouter } from "next/navigation";
 function ServicesSection({ data }) {
   const router = useRouter();
 
-  console.log(data)
-
   return (
     <ServiceContainer
       title={data?.mainCategory.title || "Category"}
       button={"See All"}
-     href={`/category?id=${data?.mainCategory.id}`}
+     href={`/category?id=${data?.mainCategory?.category?.at(0)?.id}`}
     >
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
         {data?.mainCategory.category?.map((service, i) => (

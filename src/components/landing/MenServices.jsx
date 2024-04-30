@@ -16,11 +16,8 @@ import Image from "next/image";
 
 function MenServices({ data }) {
 
-  console.log(data)
-
-
   return (
-    <ServiceContainer title={data?.secondaryCategory?.title} button={"See All"} href={`/categort?id=${data?.secondaryCategory?.id}`}>
+    <ServiceContainer title={data?.secondaryCategory?.title} button={"See All"} href={`/category?id=${data?.secondaryCategory?.category?.at(0)?.id}`}>
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
         {data?.secondaryCategory?.category?.map((service, i) => (
           <div className="flex-1 max-w-[250px]">

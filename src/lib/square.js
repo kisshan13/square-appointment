@@ -7,4 +7,11 @@ const square = new Client({
   environment: Environment.Sandbox,
 });
 
+export async function getSubCategory(parentId, category) {
+
+  const subCategory = category?.filter((c) => c.categoryData.parentCategory?.id === parentId);
+  return subCategory;
+}
+
 export default square;
+
