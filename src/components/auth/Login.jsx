@@ -3,7 +3,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Button } from "@radix-ui/themes";
-import { useState } from "react";
+import { createRef, useState } from "react";
 
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -31,7 +31,7 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState();
   const [error, setError] = useState();
 
-  const buttonRef = createref();
+  const buttonRef = createRef();
 
   const { handleSubmit, formState: { errors }, register } = useForm({
     resolver: yupResolver(isNewUser ? signupSchema : loginSchema)
@@ -104,7 +104,7 @@ export default function Login() {
 
             <div>
               <p className="text-red-400 text-sm">{error}</p>
-              </div>
+            </div>
             <div
               style={{
                 display: "flex",

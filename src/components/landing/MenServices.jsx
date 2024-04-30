@@ -15,16 +15,15 @@ const services = [
 
 function MenServices({data}) {
   return (
-    <ServiceContainer title={"Salon For Men"} button={"See All"}>
+    <ServiceContainer title={data?.secondaryCategory?.title} button={"See All"}>
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
-        {services?.map((service, i) => (
+        {data?.secondaryCategory?.category?.map((service, i) => (
           <div className="flex-1 max-w-[250px]">
-            <ServiceCard
-              src={service?.img}
-              alt={service.title}
-              title={service.title}
+              <ServiceCard
+              src={service?.image}
+              alt={service?.categoryData?.name}
+              title={service?.categoryData?.name}
               href={"#"}
-              key={i}
             />
           </div>
         ))}

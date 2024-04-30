@@ -21,6 +21,19 @@ export async function GET(request) {
 
     const [mainCategoryId, secondaryCategoryId] = pageCategory.categories;
 
+    let mainCategoryName = "";
+    let secondaryCategoryName = "";
+
+    categories.result.objects.forEach((obj) => {
+      if (obj.id === mainCategoryId) {
+        mainCategoryName = obj.categoryData.name
+      }
+
+      if (obj.id === secondaryCategoryId) {
+        secondaryCategoryName = obj.categoryData.name
+      }
+    })
+
     const images = await Promise.all(
       categories.result.objects.map((object) =>
         square.catalogApi.retrieveCatalogObject(
@@ -62,13 +75,20 @@ export async function GET(request) {
           heading: store?.hero || "Home services at your doorstep",
           categoryText: store?.categoryDisplay || "What are you looking for ?",
           category: category,
-          mainCategory: mainCategory,
-          secondaryCategory,
+          mainCategory: {
+            title: mainCategoryName,
+            category: mainCategory
+          },
+          secondaryCategory: {
+            title: secondaryCategoryName,
+            category: secondaryCategory
+          },
         },
       },
       { status: 200 }
     );
   } catch (error) {
+    console.log(error)
     return Response.json({ message: "Internal server error" }, { status: 500 });
   }
 }
