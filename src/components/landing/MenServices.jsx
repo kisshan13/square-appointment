@@ -1,7 +1,6 @@
 "use client";
 import ServiceCard from "../cards/ServiceCard";
 import ServiceContainer from "../shared/ServiceContainer";
-import Image from "next/image";
 
 function MenServices({ data }) {
 
