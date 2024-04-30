@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CiPercent } from "react-icons/ci";
 
@@ -12,6 +13,7 @@ const PlusBenefits = () => {
       description: "Enjoy 15% discount on trying a category for the first time",
     },
   ];
+
   return (
     <div className="flex flex-col gap-5 ">
       <h1 className="text-black font-medium text-lg">All Plus benefits</h1>
