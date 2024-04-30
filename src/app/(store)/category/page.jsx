@@ -1,11 +1,10 @@
-"use client";
 import ProductCard from "@/components/cards/ProductCard";
 import Banner from "@/components/Category/Banner";
 import SubCategory from "@/components/Category/SubCategory";
 import PageContainer from "@/components/container/PageContainer";
 import { apiGetProductsByCategory } from "@/lib/api/products.api";
 
-export default async function Home({ params, searchParams }) {
+export default async function Home({  searchParams }) {
 
   const response = await apiGetProductsByCategory(searchParams?.id);
   const products = response.data;

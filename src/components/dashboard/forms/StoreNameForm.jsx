@@ -11,7 +11,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-import "../../category/styles.css";
 import { apiStoreConfig } from "@/lib/api/store.api";
 
 const schema = yup.object({

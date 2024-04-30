@@ -1,6 +1,5 @@
 import "../globals.css";
 import "@radix-ui/themes/styles.css";
-import { Providers } from "../provider";
 import { Theme } from "@radix-ui/themes";
 import Fotter from "@/components/ui/Fotter";
 import PageContainer from "@/components/container/PageContainer";
@@ -18,8 +17,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Theme>
-          <Provider store={store}>
-            <Providers>
               <div className="border-b">
                 <PageContainer>
                   <Header />
@@ -29,8 +26,6 @@ export default function RootLayout({ children }) {
               <div className="bg-[#F5F5F5] mt-6">
                 <Fotter />
               </div>
-            </Providers>
-          </Provider>
         </Theme>
       </body>
     </html>

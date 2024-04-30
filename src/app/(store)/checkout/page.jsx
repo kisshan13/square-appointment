@@ -1,4 +1,3 @@
-"use client";
 import CartCard from "@/components/Category/CartCard";
 import Coupon from "@/components/checkout/Coupons";
 import PlusBenefits from "@/components/checkout/PlusBenefits";
