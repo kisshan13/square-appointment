@@ -5,7 +5,7 @@ import PlusBenefits from "@/components/checkout/PlusBenefits";
 import UnlockBenefits from "@/components/checkout/UnlockBenefits";
 import PageContainer from "@/components/container/PageContainer";
 
-export default function Home({ params }) {
+export default function Home() {
   return (
     <div className="my-8">
       <PageContainer>

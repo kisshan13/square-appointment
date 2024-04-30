@@ -2,9 +2,9 @@
 
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { Button } from "@radix-ui/themes";
+// import { Button } from "@radix-ui/themes";
+import { Button } from "@nextui-org/react"
 import { createRef, useState } from "react";
-
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -44,91 +44,95 @@ export default function Login() {
 
       localStorage.setItem("token", response.data?.token)
 
-      buttonRef.current?.click();
+      setOpen(false);
     } catch (error) {
       console.log(error)
-      setError(error?.response?.data?.message || "Something went wrong")
+      setError(error?.response?.data?.message || error?.response?.data?.error || "Something went wrong")
     }
     setIsLoading(false)
   }
 
+  const local = typeof window !== "undefined" ? window.localStorage : { getItem: (token) => null }
+
   return (
-    <Dialog.Root>
-      <Dialog.Trigger asChild>
-        <Button variant="outline" className="cursor-pointer">
-          Login
-        </Button>
-      </Dialog.Trigger>
-      <Dialog.Portal>
-        <Dialog.Overlay className="DialogOverlay" />
-        <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle ">Login/Sign up</Dialog.Title>
-          <form onSubmit={handleSubmit(handleUserAuth)}>
-            {
-              isNewUser &&
-              <fieldset className="Fieldset mt-8">
-                <label className="Label">Name</label>
-                <div>
-                  <input
-                    className="Input"
-                    type=""
-                    disabled={isLoading}
-                    {...register("name")}
-                  />
-                  <p className=" text-sm text-red-400">{errors?.name?.message}</p>
-                </div>
-              </fieldset>
-            }
+    <>
+      {
+        local?.getItem("token") ?
+          <Dialog.Root open={open} onOpenChange={setOpen}>
+            <Dialog.Trigger asChild>
+              <Button >
+                Login
+              </Button>
+            </Dialog.Trigger>
+            <Dialog.Portal>
+              <Dialog.Overlay className="DialogOverlay" />
+              <Dialog.Content className="DialogContent">
+                <Dialog.Title className="DialogTitle ">Login/Sign up</Dialog.Title>
+                <form onSubmit={handleSubmit(handleUserAuth)}>
+                  {
+                    isNewUser &&
+                    <fieldset className="Fieldset mt-8">
+                      <label className="Label">Name</label>
+                      <div>
+                        <input
+                          className="Input"
+                          type=""
+                          disabled={isLoading}
+                          {...register("name")}
+                        />
+                        <p className=" text-sm text-red-400">{errors?.name?.message}</p>
+                      </div>
+                    </fieldset>
+                  }
 
-            <fieldset className="Fieldset mt-8">
-              <label className="Label">Email</label>
-              <div>
-                <input
-                  className="Input"
-                  type="email"
-                  placeholder="Pedro@gmail.com "
-                  disabled={isLoading}
-                  {...register("email")}
-                />
-                <p className=" text-sm text-red-400">{errors?.email?.message}</p>
-              </div>
-            </fieldset>
-            <fieldset className="Fieldset">
-              <label className="Label">Password</label>
-              <div>
+                  <fieldset className="Fieldset mt-8">
+                    <label className="Label">Email</label>
+                    <div>
+                      <input
+                        className="Input"
+                        type="email"
+                        placeholder="Pedro@gmail.com "
+                        disabled={isLoading}
+                        {...register("email")}
+                      />
+                      <p className=" text-sm text-red-400">{errors?.email?.message}</p>
+                    </div>
+                  </fieldset>
+                  <fieldset className="Fieldset">
+                    <label className="Label">Password</label>
+                    <div>
+                      <input disabled={isLoading} className="Input" type="password" {...register("password")} />
+                      <p className=" text-sm text-red-400">{errors?.password?.message}</p>
+                    </div>
+                  </fieldset>
 
-                <input disabled={isLoading} className="Input" type="password" {...register("password")} />
-                <p className=" text-sm text-red-400">{errors?.password?.message}</p>
-              </div>
-            </fieldset>
+                  <div>
+                    <p className="text-red-400 text-sm">{error}</p>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      marginTop: 25,
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <span className=" font-medium text-sm cursor-pointer" onClick={() => setIsNewUser(!isNewUser)}>
+                      {!isNewUser ? "New User ?" : "Already a user ?"}
+                    </span>
 
-            <div>
-              <p className="text-red-400 text-sm">{error}</p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                marginTop: 25,
-                justifyContent: "space-between",
-              }}
-            >
-              <span className=" font-medium text-sm cursor-pointer" onClick={() => setIsNewUser(!isNewUser)}>
-                {!isNewUser ? "New User ?" : "Already a user ?"}
-              </span>
+                    <Button type="submit" isLoading={isLoading}>{!isNewUser ? "Login" : "Signup"}</Button>
 
-              <button disabled={isLoading} className="Button green">{!isNewUser ? "Login" : "Signup"}</button>
-
-            </div>
-          </form>
-
-
-          <Dialog.Close asChild>
-            <button ref={buttonRef} className="IconButton" aria-label="Close" disbaled={isLoading}>
-              <Cross2Icon />
-            </button>
-          </Dialog.Close>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+                  </div>
+                </form>
+                <Dialog.Close asChild>
+                  <button ref={buttonRef} className="IconButton" aria-label="Close" disbaled={isLoading}>
+                    <Cross2Icon />
+                  </button>
+                </Dialog.Close>
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root> : <></>
+      }
+    </>
   );
 }

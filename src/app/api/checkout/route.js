@@ -21,7 +21,7 @@ export async function POST(request) {
         const checkout = await square.checkoutApi.createPaymentLink({
             order: {
                 lineItems: [{itemType: "ITEM", catalogObjectId: payload.productId}],
-                customerId: payload.customerId
+                customerId: isAuthenticated.response
             }
         });
 

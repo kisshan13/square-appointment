@@ -10,7 +10,6 @@ import { userAuthSchema } from "@/utils/schema";
  *
  * @param {NextRequest} request
  */
-
 export async function POST(request) {
   try {
     const rawPayload = await request.json();

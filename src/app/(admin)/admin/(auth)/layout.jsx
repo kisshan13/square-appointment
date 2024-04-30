@@ -1,6 +1,5 @@
 import "../../../globals.css";
 import "@radix-ui/themes/styles.css";
-import { Providers } from "../provider";
 import { Theme } from "@radix-ui/themes";
 
 export const metadata = {
@@ -13,9 +12,9 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body>
                 <Theme>
-                    <Providers>
-                        {children}
-                    </Providers>
+
+                    {children}
+
                 </Theme>
             </body>
         </html>

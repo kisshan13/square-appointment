@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Package from "../ui/Icon/Package";
 import Star from "../ui/Icon/Star";
 import Image from "next/image";
@@ -47,7 +47,10 @@ const packagesData = [
   },
 ];
 
-const Packages = ({data}) => {
+const Packages = ({ data }) => {
+
+  const [selectedProduct, setSelectedProduct] = useState();
+
   return (
     <div>
       <div className="flex flex-col gap-4">
@@ -71,12 +74,12 @@ const Packages = ({data}) => {
                       <Star className="w-5 h-5 flex items-center justify-center" />
                       <div className="border-b border-dashed border-gray-500 flex gap-2">
                         <span className="text-sm text-black font-light"> */}
-                          {/* {data?.rating} */}
-                        {/* </span> */}
-                        {/* <span className="text-sm text-black font-light"> */}
-                          {/* {data?.booking} */}
-                        {/* </span> */}
-                      {/* </div> */}
+                    {/* {data?.rating} */}
+                    {/* </span> */}
+                    {/* <span className="text-sm text-black font-light"> */}
+                    {/* {data?.booking} */}
+                    {/* </span> */}
+                    {/* </div> */}
                     {/* </div> */}
                     <div className="flex  w-full">
                       <div className="flex-1">
@@ -90,7 +93,7 @@ const Packages = ({data}) => {
                         </div>
 
                         <div dangerouslySetInnerHTML={{ __html: data.itemData.descriptionHtml }}>
-                          </div>
+                        </div>
 
                         {/* <div className="flex flex-col gap-1 mt-3">
                           {data?.features?.map((feature, i) => {
@@ -119,7 +122,8 @@ const Packages = ({data}) => {
                     </div>
                   </div>
                   <div className="my-5">
-                    <EditCartPackage />
+                    {/* <EditCartPackage /> */}
+                    <Button variant="outline" onClick={() => setSelectedProduct(data?.id)}>Book appointment</Button>
                   </div>
                   <hr className="mb-5" />
                 </div>
@@ -127,7 +131,7 @@ const Packages = ({data}) => {
             })}
           </div>
           <div className="flex flex-col gap-1 justify-center w-1/2 p-5">
-            <Cart />
+            <Cart data={data} product={selectedProduct} />
           </div>
         </div>
       </div>

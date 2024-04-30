@@ -22,11 +22,11 @@ const Services = ({ data }) => {
   return (
     <div className="w-full">
       <h1 className="hidden lg:flex text-3xl text-black font-medium max-w-80">
-        {data?.heading}
+        {"Book your appointments now !!" || data?.heading}
       </h1>
       <div className="rounded-lg lg:mt-4 lg:border border-gray-400 lg:p-4 flex flex-col gap-3 ">
         <h2 className="hidden lg:flex text-lg text-gray-400">
-          {data?.categoryText}
+          {"What are your looking for ?" || data?.categoryText}
         </h2>
         <div className="flex flex-col gap-4 mt-4">
           <ServicesCard data={data?.category} bgColor={true} />
