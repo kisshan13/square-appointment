@@ -12,14 +12,16 @@ export default async function Home() {
   const res = await fetch("http://localhost:3000/api/store");
   const data = await res.json();
 
+  console.log(data);
+
   return (
     <>
       <main>
         <PageContainer>
-          <HeroSection data={data?.landing} />
-          <ServicesSection data={data?.landing} />
+          <HeroSection data={data?.hero} />
+          <ServicesSection data={data?.hero} />
           <Image src={banner1} className="w-full rounded-lg" />
-          <MenServices data={data?.landing} />
+          <MenServices data={data?.hero} />
           <Image src={banner2} className=" mt-8 w-full rounded-lg" />
         </PageContainer>
       </main>

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CiPercent } from "react-icons/ci";
 
@@ -12,9 +13,11 @@ const Coupon = () => {
         return (
           <div className="flex items-center justify-start gap-7" key={i}>
             <div className="">
-              <CiPercent className="w-6 h-6"/>
+              <CiPercent className="w-6 h-6" />
             </div>
-            <span className="text-sm text-black font-normal">{data?.title}</span>
+            <span className="text-sm text-black font-normal">
+              {data?.title}
+            </span>
           </div>
         );
       })}
