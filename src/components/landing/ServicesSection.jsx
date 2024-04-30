@@ -12,7 +12,7 @@ function ServicesSection({ data }) {
     <ServiceContainer
       title={data?.mainCategory.title || "Category"}
       button={"See All"}
-      onClick={() => router.push("/category")}
+     href={`/category?id=${data?.mainCategory.id}`}
     >
       <div className="grid grid-cols-5 gap-5 overflow-x-scroll scrollbar-hide">
         {data?.mainCategory.category?.map((service, i) => (

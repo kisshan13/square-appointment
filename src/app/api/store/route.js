@@ -66,8 +66,6 @@ export async function GET(request) {
 
     const store = await prisma.store.findFirst();
 
-    console.log(store)
-
     return Response.json(
       {
         landing: {
@@ -77,11 +75,13 @@ export async function GET(request) {
           category: category,
           mainCategory: {
             title: mainCategoryName,
-            category: mainCategory
+            category: mainCategory,
+            id: mainCategoryId
           },
           secondaryCategory: {
             title: secondaryCategoryName,
-            category: secondaryCategory
+            category: secondaryCategory,
+            id: secondaryCategoryId
           },
         },
       },
